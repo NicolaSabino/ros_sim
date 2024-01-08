@@ -1,8 +1,5 @@
 # Use the official ROS Melodic base image
-FROM ros:melodic
-
-ENV QT_SELECT=4
-ENV DISPLAY=:0
+FROM ros:melodic as sim_dependencies
 
 # Install STDR simulator dependencies
 RUN apt-get update && apt-get install -y \
@@ -19,11 +16,18 @@ RUN apt-get update && apt-get install -y \
     mesa-utils \
     && rm -rf /var/lib/apt/lists/*
 
+
+FROM sim_dependencies as build
+
+ENV QT_SELECT=4
+ENV DISPLAY=:0
+ENV QT_X11_NO_MITSHM=1
+
 # Set up ROS workspace
 WORKDIR /catkin_ws/src
-RUN git clone https://github.com/stdr-simulator-ros-pkg/stdr_simulator.git
+COPY stdr_simulator .
 WORKDIR /catkin_ws
 RUN /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make"
 
 # Set up entry point
-CMD /bin/bash -c "source /catkin_ws/devel/setup.bash && roslaunch stdr_launchers server_with_map_and_gui_plus_robot.launch"
+CMD /bin/bash -c "source /catkin_ws/devel/setup.bash && roslaunch stdr_launchers luxoft_launch.launch"
