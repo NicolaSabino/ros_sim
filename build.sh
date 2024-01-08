@@ -1,3 +1,3 @@
 #!/bin/bash
 
-docker build -t sim_image .
+docker build --no-cache -t sim_image .

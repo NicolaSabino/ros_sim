@@ -30,4 +30,4 @@ WORKDIR /catkin_ws
 RUN /bin/bash -c "source /opt/ros/melodic/setup.bash && catkin_make"
 
 # Set up entry point
-CMD /bin/bash -c "source /catkin_ws/devel/setup.bash && roslaunch stdr_launchers luxoft_launch.launch"
+CMD /bin/bash -c "source /catkin_ws/devel/setup.bash && roslaunch stdr_launchers server_with_map_and_gui_plus_robot.launch"

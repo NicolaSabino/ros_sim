@@ -1,4 +1,15 @@
-# Useful notes
+# Qick simulation
+
+Easy run
+
+```bash
+git clone --recursive https://github.com/NicolaSabino/ros_sim \
+    && cd ros_sim \
+    && ./build.sh \
+    && ./run.sh
+```
+
+## Useful notes
 
 * [Programm-An-Autonomous-Vehicle-in-ROS](https://github.com/A2Amir/Programm-An-Autonomous-Vehicle-in-ROS)
 * [nvidia kit car project](https://github.com/ArthurDassier/Mjolnir_kit)

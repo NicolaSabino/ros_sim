@@ -1,0 +1,4 @@
+[submodule "stdr_simulator"]
+	path = stdr_simulator
+	url = https://github.com/stdr-simulator-ros-pkg/stdr_simulator.git
+	branch = indigo-devel
